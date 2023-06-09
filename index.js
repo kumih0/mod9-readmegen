@@ -2,16 +2,84 @@
 const fs =  require('fs');
 const inquirer = require('inquirer');
 
+
 // TODO: Create an array of questions for user input
+//title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
 const questions = [
-    
+    {
+        type: 'input',
+        message: 'Project Title?',
+        name: 'title',
+      },
+      {
+        type: 'input',
+        message: 'Enter brief description of project:',
+        name: 'description',
+      },
+      {
+        type: 'checkbox',
+        message: 'Select what to include in your Table of Contents:',
+        choices: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions', 'Screenshot', 'Live Link'],
+        name: 'table',
+      },
+      {
+          type: 'input',
+          message: 'Add installation instructions:',
+          name: 'install',
+        },
+        {
+          type: 'input',
+          message: 'Usage info?',
+          name: 'usage',
+        },
+        {
+            type: 'list',
+            message: 'Select a license for your project:',
+            choices:[''],
+            name: 'license',
+          },
+          {
+            type: 'input',
+            message: 'Add contribution guidelines:',
+            name: 'contributing',
+          },
+          {
+            type: 'input',
+            message: 'Test instructions?',
+            name: 'tests',
+          },
+          {
+            type: 'input',
+            message: 'Github username?',
+            name: 'github',
+          },
+          {
+            type: 'input',
+            message: 'Email?',
+            name: 'email',
+          },
+          {
+            type: 'input',
+            message: 'Add screenshot link:',
+            name: 'screenshot',
+          },
+          {
+            type: 'input',
+            message: 'Add Github Live Link:',
+            name: 'livelink',
+          },
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName = 'README.md', generateMarkdown(data), (err) => console.log(err ? err : 'it works dummy'))
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then((data) => {writeToFile(data) });
+}
 
 // Function call to initialize app
 init();
