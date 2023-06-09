@@ -18,12 +18,6 @@ const questions = [
         name: 'description',
       },
       {
-        type: 'checkbox',
-        message: 'Select what to include in your Table of Contents:',
-        choices: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions', 'Screenshot', 'Live Link'],
-        name: 'table',
-      },
-      {
           type: 'input',
           message: 'Add installation instructions:',
           name: 'install',
@@ -36,7 +30,7 @@ const questions = [
         {
             type: 'list',
             message: 'Select a license for your project:',
-            choices:['MIT', 'Apache', 'GNU', 'none'],
+            choices:['MIT', 'Apache 2.0', 'Eclipse', 'BSD', 'none'],
             name: 'license',
           },
           {
