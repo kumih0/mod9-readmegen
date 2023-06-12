@@ -1,7 +1,8 @@
 // TODO: Include packages needed for this application
 const fs =  require('fs');
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown');
+const { default: ConfirmPrompt } = require('inquirer/lib/prompts/confirm');
 
 
 // TODO: Create an array of questions for user input
@@ -16,6 +17,37 @@ const questions = [
         type: 'input',
         message: 'Enter brief description of project:',
         name: 'description',
+      },
+      {
+        type: 'checkbox',
+        message: 'Select what to include in table of contents:',
+        choices:[
+            {
+                name: 'Install',
+                value: confirm,
+            },
+            {
+                name: 'Usage',
+                value: confirm,
+            }, 
+            {
+                name: 'License',
+                value: confirm,
+            }, 
+            {
+                name: 'Contribute',
+                value: confirm,
+            }, 
+            {
+                name: 'Tests',
+                value: confirm,
+            }, 
+            {
+                name: 'Questions',
+                value: confirm,
+            }, 
+            ],
+        name: 'TOC',
       },
       {
           type: 'input',
