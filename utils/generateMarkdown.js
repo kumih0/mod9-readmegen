@@ -1,6 +1,8 @@
 //render table of contents
 function renderTOC(TOC) {
-  
+  if (TOC) {
+    
+  }
 }
 
 // TODO: Create a function that returns a license badge based on which license is passed in

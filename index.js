@@ -25,6 +25,7 @@ const questions = [
             {
                 name: 'Install',
                 value: 'install',
+                
             },
             {
                 name: 'Usage',
@@ -47,6 +48,7 @@ const questions = [
                 value: 'questions',
             }, 
             ],
+        default: ['Install', 'Usage', 'License', 'Contribute', 'Tests', 'Questions'],
         name: 'TOC',
       },
       {
@@ -106,6 +108,7 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions).then((data) => {
+        console.log(data);
         writeToFile('READEME.md', data);
     });
 }
