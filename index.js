@@ -2,7 +2,7 @@
 const fs =  require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-const { default: Prompt } = require('inquirer/lib/prompts/');
+
 
 
 // TODO: Create an array of questions for user input
@@ -23,8 +23,8 @@ const questions = [
         message: 'Select what to include in table of contents:',
         choices:[
             {
-                name: 'Install',
-                value: 'install',
+                name: 'Installation',
+                value: 'installation',
                 
             },
             {
@@ -36,8 +36,8 @@ const questions = [
                 value: 'license',
             }, 
             {
-                name: 'Contribute',
-                value: 'contribute',
+                name: 'Contributing',
+                value: 'contributing',
             }, 
             {
                 name: 'Tests',
@@ -48,7 +48,7 @@ const questions = [
                 value: 'questions',
             }, 
             ],
-        default: ['Install', 'Usage', 'License', 'Contribute', 'Tests', 'Questions'],
+        default: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions'],
         name: 'TOC',
       },
       {
@@ -108,7 +108,6 @@ function writeToFile(fileName, data) {
 // TODO: Create a function to initialize app
 function init() {
     return inquirer.prompt(questions).then((data) => {
-        console.log(data);
         writeToFile('READEME.md', data);
     });
 }

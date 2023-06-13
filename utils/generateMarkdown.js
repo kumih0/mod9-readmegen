@@ -1,10 +1,21 @@
 //render table of contents
 function renderTOC(TOC) {
-  if (TOC) {
-    
-  }
+  TOC.forEach(element => {
+    console.log(element);
+    return `* [${element}](#${element})`
+  });
 }
-
+//  * [Installation](#installation)
+  
+//   * [Usage](#usage)
+  
+//   * [License](#license)
+  
+//   * [Contributing](#contributing)
+  
+//   * [Tests](#tests)
+  
+//   * [Questions](#questions)
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 //https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>
@@ -39,6 +50,13 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  let table;
+  if (data.TOC) {
+    table += renderTOC(data.TOC);
+  }
+
+  let license 
+
   return `
   # Title
   # ${data.title}
@@ -48,18 +66,8 @@ function generateMarkdown(data) {
   ${data.description}
   
   ## Table of Contents 
-  
-  * [Installation](#installation)
-  
-  * [Usage](#usage)
-  
-  * [License](#license)
-  
-  * [Contributing](#contributing)
-  
-  * [Tests](#tests)
-  
-  * [Questions](#questions)
+    
+  ${table}
   
   ## Installation
   
@@ -83,11 +91,11 @@ function generateMarkdown(data) {
   To run tests, run the following command:
   ${data.tests}
   
-  ##Screenshot
+  ## Screenshot
 
   ${data.screenshot}
 
-  ##Live Link
+  ## Live Link
 
    ${data.livelink}
   
