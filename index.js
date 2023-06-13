@@ -2,7 +2,7 @@
 const fs =  require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-const { default: ConfirmPrompt } = require('inquirer/lib/prompts/confirm');
+const { default: Prompt } = require('inquirer/lib/prompts/');
 
 
 // TODO: Create an array of questions for user input
@@ -24,27 +24,27 @@ const questions = [
         choices:[
             {
                 name: 'Install',
-                value: confirm,
+                value: 'install',
             },
             {
                 name: 'Usage',
-                value: confirm,
+                value: 'usage',
             }, 
             {
                 name: 'License',
-                value: confirm,
+                value: 'license',
             }, 
             {
                 name: 'Contribute',
-                value: confirm,
+                value: 'contribute',
             }, 
             {
                 name: 'Tests',
-                value: confirm,
+                value: 'tests',
             }, 
             {
                 name: 'Questions',
-                value: confirm,
+                value: 'questions',
             }, 
             ],
         name: 'TOC',
