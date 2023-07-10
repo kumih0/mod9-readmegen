@@ -1,6 +1,6 @@
 //render table of contents
-function renderTOC(TOC) {
-  TOC.forEach(element => {
+function renderTOC(toc) {
+  toc.forEach(element => {
     console.log(element);
     return `* [${element}](#${element})`
   });
@@ -36,14 +36,19 @@ function renderLicenseLink(license) {
     if (license === 'none') {
       return '';
     } else {
-      
+      return `https://opensource.org/licenses/${license}`;
     }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-
+  if (license === 'none') {
+    return '';
+  } else {
+    return `## License
+    This project is licensed under the ${license} license.`;
+  }
 }
 
 
@@ -51,8 +56,8 @@ function renderLicenseSection(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   let table;
-  if (data.TOC) {
-    table += renderTOC(data.TOC);
+  if (data.toc) {
+    table += renderTOC(data.toc);
   }
 
   let license 

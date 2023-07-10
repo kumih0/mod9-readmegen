@@ -49,7 +49,7 @@ const questions = [
             }, 
             ],
         default: ['Installation', 'Usage', 'License', 'Contributing', 'Tests', 'Questions'],
-        name: 'TOC',
+        name: 'toc',
       },
       {
           type: 'input',
