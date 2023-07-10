@@ -24,24 +24,24 @@ const questions = [
         choices:[
             {
                 name: 'Installation',
-                value: 'installation',
+                value: 'Installation',
                 
             },
             {
                 name: 'Usage',
-                value: 'usage',
+                value: 'Usage',
             }, 
             {
                 name: 'License',
-                value: 'license',
+                value: 'License',
             }, 
             {
                 name: 'Contributing',
-                value: 'contributing',
+                value: 'Contributing',
             }, 
             {
                 name: 'Tests',
-                value: 'tests',
+                value: 'Tests',
             }, 
             ],
         default: ['Installation', 'Usage', 'License', 'Contributing', 'Tests'],
@@ -97,7 +97,6 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    console.log(data);
     fs.writeFile(fileName, generateMarkdown(data), (err) => console.log(err ? err : 'it works dummy'))
     };
 
