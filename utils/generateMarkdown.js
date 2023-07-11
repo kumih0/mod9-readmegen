@@ -73,11 +73,11 @@ function renderLicenseSection(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   const table = generateTOC(data.toc);
-  console.log(table);
-  console.log(data.toc);
+  // console.log(table);
+  // console.log(data.toc);
   const sections = renderSections(data, data.toc);
 
-  console.log(sections);
+  // console.log(sections);
   const licenseBadge = renderLicenseBadge(data.license);
 
 
