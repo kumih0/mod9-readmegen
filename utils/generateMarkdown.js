@@ -64,7 +64,7 @@ function renderLicenseSection(license) {
   if (license === 'none') {
     return '';
   } else {
-    return ` ## License \n This project is licensed under the ![${license}](${renderLicenseLink(license)}) license. \n`;
+    return ` \n ## License \n \n This project is licensed under the ![${license}](${renderLicenseLink(license)}) license. \n`;
   }
 }
 
@@ -82,8 +82,7 @@ function generateMarkdown(data) {
 
 
   return `
-  # Title
-  # ${data.title}
+  # Title: ${data.title}
 
   ![License: ${data.license}](${licenseBadge})
 
@@ -93,7 +92,7 @@ function generateMarkdown(data) {
   
   ## Table of Contents 
     
-  ${table}
+${table}
   
   ${sections}
   
