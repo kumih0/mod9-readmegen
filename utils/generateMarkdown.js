@@ -8,12 +8,12 @@ function renderTOC(toc) {
 //render the sections of readme based on toc selection
 function renderSections(data, toc) {
   const tocArray = [];
-  if (toc) {
+  if (toc === 'none') {
+  tocArray = ['Installation', 'Usage', 'License', 'Contributing', 'Tests'];
+  } else {
     toc.forEach(element => {
       tocArray.push(element);
     });
-  } else {
-    tocArray.push('Installation', 'Usage', 'License', 'Contributing', 'Tests');
   }
   console.log(tocArray);
   let sections = '';
@@ -23,23 +23,13 @@ function renderSections(data, toc) {
     if (sect == 'License') {
       sections += ` ${renderLicenseSection(data.license)}`;
     } else {
-      sections += `## ${sect}
-      ${data.sect}`;
+      sections += `## ${sect} \n
+      ${data.sect} \n`;
     }
   }
   return sections;
 };
-//  * [Installation](#installation)
 
-//   * [Usage](#usage)
-
-//   * [License](#license)
-
-//   * [Contributing](#contributing)
-
-//   * [Tests](#tests)
-
-//   * [Questions](#questions)
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 //https://img.shields.io/badge/<LABEL>-<MESSAGE>-<COLOR>
@@ -71,7 +61,7 @@ function renderLicenseSection(license) {
     return '';
   } else {
     return `## License
-    This project is licensed under the ${renderLicenseLink(license)} license.`;
+    This project is licensed under the ![${license}](${renderLicenseLink(license)}) license.`;
   }
 }
 
@@ -79,10 +69,7 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  let table = '';
-  if (data.toc) {
-    table += renderTOC(data.toc);
-  }
+  const table = renderTOC(data.toc);
   const sections = renderSections(data, data.toc);
   const licenseBadge = renderLicenseBadge(data.license);
 
