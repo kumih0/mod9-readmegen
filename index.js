@@ -105,10 +105,11 @@ function writeToFile(fileName, data) {
 //function to check toc answers, and then build an array of follow up prompts accordingly
 function generatePrompts(toc) {
   let prompts = [];
+  //if toc is empty, add all prompts to match the default validation i created in the generatemd file
   if (toc == 'undefined' || toc == '') {
     prompts = [installq, usageq, licenseq, contributeq, testq];
     return prompts;
-  } else {
+  } else { //omg i hate this and it look terribkle lololol
   toc.includes('Installation') ? prompts.push(installq) : null;
   toc.includes('Usage') ? prompts.push(usageq) : null;
   toc.includes('License') ? prompts.push(licenseq) : null;
@@ -120,12 +121,19 @@ function generatePrompts(toc) {
 
 // TODO: Create a function to initialize app
 function init() {
-
-//   return inquirer.prompt(questions)
-  
-//   .then((data) => {
-//     writeToFile('README.md', data);
-//   });
+  //runs the first set of questions that aren't affected by the toc answers
+  return inquirer.prompt(questions).then((data) => {
+    const prompts = generatePrompts(data.toc);
+    //creates a new object with the answers from the first set of questions
+    const baseData = data;
+    //runs the follow up questions based on the toc answers
+    return inquirer.prompt(prompts).then((data) => {
+      //creates a new object with the answers from the follow up questions combined with the answers from the first set of questions
+      const newData = { ...baseData, ...data };
+      //writes the readme file with the combined answers
+      return writeToFile('README.md', newData);
+  });
+});
 }
 
 // Function call to initialize app
