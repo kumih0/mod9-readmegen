@@ -62,11 +62,17 @@ const questions = [
   },
   {
     type: 'input',
+    message: 'Add Github repo name:',
+    name: 'repolink',
+  },
+  {
+    type: 'input',
     message: 'Add Live Link:',
     name: 'livelink',
   },
 ];
 
+//self-made mess: saving separate objects for each follow up prompt, so specific prompts can be targeted based on what user input for what sections they want in toc
 const installq = {
   type: 'input',
   message: 'Add installation instructions:',
@@ -100,6 +106,7 @@ function writeToFile(fileName, data) {
   fs.writeFile(fileName, generateMarkdown(data), (err) => console.log(err ? err : 'it works dummy'))
 };
 
+//self-made mess: added new function to only give prompts for sections that user selects, not just run through all the prompts regardless of whether or not they're included in final md generated
 //function to check toc answers, and then build an array of follow up prompts accordingly
 function generatePrompts(toc) {
   let prompts = [];
@@ -107,12 +114,16 @@ function generatePrompts(toc) {
   if (toc == 'undefined' || toc == '') {
     prompts = [installq, usageq, licenseq, contributeq, testq];
     return prompts;
-  } else { //omg i hate this and it look terribkle lololol
+  } else { //omg i hate this and it look terrible lololol, can't do switch cases since i want to add to the array, not just replace it, and i can't do if/else because i want to check for multiple cases, not just one
+  //loop also can't work due to calling specific follow-up prompts
+
+  //if toc includes a specific section, push the corresponding follow up prompt to the array
   toc.includes('Installation') ? prompts.push(installq) : null;
   toc.includes('Usage') ? prompts.push(usageq) : null;
   toc.includes('License') ? prompts.push(licenseq) : null;
   toc.includes('Contributing') ? prompts.push(contributeq) : null;
   toc.includes('Tests') ? prompts.push(testq) : null;
+  //return the array of follow up prompts
   return prompts;
   }
 };
