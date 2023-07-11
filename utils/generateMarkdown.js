@@ -13,26 +13,22 @@ function renderTOC(toc) {
 };
 
 function generateTOC(toc) {
-  try {
-    renderTOC(toc).map((item) => {
+  const tocArray = renderTOC(toc);
+  return tocArray.map((item) => {
       return `* [${item}](#${item.toLowerCase()})`;
-    }).join('\n');
-  }
-  catch (err) {
-    console.log(err);
-  }
+      }).join('\n');
 }
 
 //render the sections of readme based on toc selection
 function renderSections(data, toc) {
-const tocArray = renderTOC(toc);
+  const tocArray = renderTOC(toc);
   let sections = '';
 
   for (let i = 0; i < tocArray.length; i++) {
     if (tocArray[i] == 'License') {
       sections += `${renderLicenseSection(data.license)} \n`;
     } else {
-      sections += `## ${tocArray[i]} \n ${data[tocArray[i].toLowerCase()]} \n`;
+      sections += `\n ## ${tocArray[i]} \n \n ${data[tocArray[i].toLowerCase()]} \n`;
     }
   }
   return sections;
@@ -68,8 +64,7 @@ function renderLicenseSection(license) {
   if (license === 'none') {
     return '';
   } else {
-    return `## License
-    This project is licensed under the ![${license}](${renderLicenseLink(license)}) license.`;
+    return ` ## License \n This project is licensed under the ![${license}](${renderLicenseLink(license)}) license. \n`;
   }
 }
 
@@ -77,7 +72,7 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const table = generateTOC(renderTOC(data.toc));
+  const table = generateTOC(data.toc);
   console.log(table);
   console.log(data.toc);
   const sections = renderSections(data, data.toc);
