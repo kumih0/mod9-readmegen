@@ -8,7 +8,7 @@ function renderTOC(toc) {
 //render the sections of readme based on toc selection
 function renderSections(data, toc) {
   const tocArray = [];
-  if (toc === 'none') {
+  if (toc == 'undefined' || toc == '') {
   tocArray = ['Installation', 'Usage', 'License', 'Contributing', 'Tests'];
   } else {
     toc.forEach(element => {
@@ -20,11 +20,11 @@ function renderSections(data, toc) {
 
   for (let i = 0; i < tocArray.length; i++) {
     let sect = tocArray[i];
+    console.log(sect);
     if (sect == 'License') {
       sections += ` ${renderLicenseSection(data.license)}`;
     } else {
-      sections += `## ${sect} \n
-      ${data.sect} \n`;
+      sections += `## ${sect} \n` + '${data.' + `${sect} \n`;
     }
   }
   return sections;
@@ -70,7 +70,11 @@ function renderLicenseSection(license) {
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   const table = renderTOC(data.toc);
+  console.log(table);
+  console.log(data.toc);
   const sections = renderSections(data, data.toc);
+
+  console.log(sections);
   const licenseBadge = renderLicenseBadge(data.license);
 
 
