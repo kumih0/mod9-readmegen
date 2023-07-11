@@ -1,14 +1,5 @@
 //render table of contents
 function renderTOC(toc) {
-  let table = '';
-  toc.forEach(element => {
-    table += `* [${element}](#${element}) \n`
-  });
-  console.log(table);
-  return table;
-}
-//render the sections of readme based on toc selection
-function renderSections(data, toc) {
   let tocArray = [];
   if (toc == 'undefined' || toc == '') {
     tocArray = ['Installation', 'Usage', 'License', 'Contributing', 'Tests'];
@@ -18,15 +9,30 @@ function renderSections(data, toc) {
     });
   }
   console.log(tocArray);
+  return tocArray;
+};
+
+function generateTOC(toc) {
+  try {
+    renderTOC(toc).map((item) => {
+      return `* [${item}](#${item.toLowerCase()})`;
+    }).join('\n');
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
+
+//render the sections of readme based on toc selection
+function renderSections(data, toc) {
+const tocArray = renderTOC(toc);
   let sections = '';
 
   for (let i = 0; i < tocArray.length; i++) {
-    let sect = tocArray[i];
-    console.log(sect);
-    if (sect == 'License') {
-      sections += ` ${renderLicenseSection(data.license)}`;
+    if (tocArray[i] == 'License') {
+      sections += `${renderLicenseSection(data.license)} \n`;
     } else {
-      sections += `## ${sect} \n ${data[sect.toLowerCase()]}`;
+      sections += `## ${tocArray[i]} \n ${data[tocArray[i].toLowerCase()]} \n`;
     }
   }
   return sections;
@@ -71,7 +77,7 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const table = renderTOC(data.toc);
+  const table = generateTOC(renderTOC(data.toc));
   console.log(table);
   console.log(data.toc);
   const sections = renderSections(data, data.toc);

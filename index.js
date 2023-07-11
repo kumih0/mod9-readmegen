@@ -50,7 +50,7 @@ const questions = [
       {
           type: 'input',
           message: 'Add installation instructions:',
-          name: 'install',
+          name: 'installation',
         },
         {
           type: 'input',
