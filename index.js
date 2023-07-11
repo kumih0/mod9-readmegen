@@ -102,11 +102,30 @@ function writeToFile(fileName, data) {
   fs.writeFile(fileName, generateMarkdown(data), (err) => console.log(err ? err : 'it works dummy'))
 };
 
+//function to check toc answers, and then build an array of follow up prompts accordingly
+function generatePrompts(toc) {
+  let prompts = [];
+  if (toc == 'undefined' || toc == '') {
+    prompts = [installq, usageq, licenseq, contributeq, testq];
+    return prompts;
+  } else {
+  toc.includes('Installation') ? prompts.push(installq) : null;
+  toc.includes('Usage') ? prompts.push(usageq) : null;
+  toc.includes('License') ? prompts.push(licenseq) : null;
+  toc.includes('Contributing') ? prompts.push(contributeq) : null;
+  toc.includes('Tests') ? prompts.push(testq) : null;
+  return prompts;
+  }
+};
+
 // TODO: Create a function to initialize app
 function init() {
-  return inquirer.prompt(questions).then((data) => {
-    writeToFile('README.md', data);
-  });
+
+//   return inquirer.prompt(questions)
+  
+//   .then((data) => {
+//     writeToFile('README.md', data);
+//   });
 }
 
 // Function call to initialize app
