@@ -1,15 +1,17 @@
 //render table of contents
 function renderTOC(toc) {
+  let table = '';
   toc.forEach(element => {
-    return `* [${element}](#${element})`
-  }
-  );
+    table += `* [${element}](#${element}) \n`
+  });
+  console.log(table);
+  return table;
 }
 //render the sections of readme based on toc selection
 function renderSections(data, toc) {
-  const tocArray = [];
+  let tocArray = [];
   if (toc == 'undefined' || toc == '') {
-  tocArray = ['Installation', 'Usage', 'License', 'Contributing', 'Tests'];
+    tocArray = ['Installation', 'Usage', 'License', 'Contributing', 'Tests'];
   } else {
     toc.forEach(element => {
       tocArray.push(element);
@@ -24,7 +26,7 @@ function renderSections(data, toc) {
     if (sect == 'License') {
       sections += ` ${renderLicenseSection(data.license)}`;
     } else {
-      sections += `## ${sect} \n` + '${data.' + `${sect} \n`;
+      sections += `## ${sect} \n ${data[sect.toLowerCase()]}`;
     }
   }
   return sections;
