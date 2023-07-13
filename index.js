@@ -78,22 +78,26 @@ const installq = {
   message: 'Add installation instructions:',
   name: 'installation',
 }
+
 const usageq = {
   type: 'input',
   message: 'Add usage information:',
   name: 'usage',
 }
+
 const licenseq = {
   type: 'list',
   message: 'Select a license for your project:',
   choices: ['MIT', 'Apache 2.0', 'Eclipse', 'BSD', 'none'],
   name: 'license',
 }
+
 const contributeq = {
   type: 'input',
   message: 'Add contribution guidelines:',
   name: 'contributing',
 }
+
 const testq = {
   type: 'input',
   message: 'Add test instructions:',

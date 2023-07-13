@@ -1,30 +1,44 @@
 
-  # Title: stupid
+  # Title: big booty bitches
 
-  ![License: Apache 2.0](https://img.shields.io/badge/license-Apache 2.0-green)
+  ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
   ## Description
   
-  farts
+  big and booty
   
   ## Table of Contents 
     
 * [Installation](#installation)
+* [Usage](#usage)
 * [License](#license)
-* [Tests](#tests)
   
   
  ## Installation 
  
- install it 
+ sit down go pee 
+
+ ## Usage 
+ 
+ numbah 2 
+ 
  ## License 
- This project is licensed under the ![Apache 2.0](https://opensource.org/licenses/Apache 2.0) license. 
+ 
+ This project is licensed under the ![MIT](https://opensource.org/licenses/MIT) license. 
  
 
- ## Tests 
- 
- no 
 
+  ## Screenshot or Video Demo of Application
+
+  ![Screenshot or Video Demo of Application](no)
+
+  ## Github Repo Link
+
+  ![Github Repo Link](https://github.com/peepeepoopoo/just-something)
+
+  ## Live Link of Deployed Application
+
+  ![Live Link of Deployed Application](facebook.com)
   
   ## Questions
-  If you have any questions, you can contact me on Github (https://github.com/kumih0) or email me at gitwrecked.
+  If you have any questions, you can contact me on Github (https://github.com/peepeepoopoo) or email me at peee@poo.com.
