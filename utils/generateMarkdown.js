@@ -70,7 +70,7 @@ function renderLicenseSection(license) {
   if (license === 'none') {
     return '';
   } else { //returns license section with the opensource link embedded in the license name
-    return ` \n ## License \n \n This project is licensed under the ![${license}](${renderLicenseLink(license)}) license. \n`;
+    return ` \n ## License \n \n This project is licensed under the [${license}](${renderLicenseLink(license)}) license. \n`;
   }
 }
 
@@ -101,11 +101,11 @@ ${table}
 
   ## Screenshot or Video Demo of Application
 
-  ![Screenshot or Video Demo of Application](${data.screenshot})
+  [Screenshot or Video Demo of Application](${data.screenshot})
 
   ## Github Repo Link
 
-  ![Github Repo Link](https://github.com/${data.github}/${data.repolink})
+  [Github Repo Link](https://github.com/${data.github}/${data.repolink})
 
   ## Live Link of Deployed Application
 
